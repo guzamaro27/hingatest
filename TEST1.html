@@ -1,0 +1,153 @@
+<main>
+  <section class="header f-center">
+    <h1>HINGA JDR</h1>
+    <div>Fiche de Personnage</div>
+  </section>
+
+  <section class="common">
+    <label>Nom: <input name="attr_character_name" type="text"></label>
+    <label>Peuple: <input name="attr_race" type="text"></label>
+	<label>Magie Principale: <input name="attr_magie_group_1" type="number" min="0" max="6" ><input name="attr_magie_element_1" type="text" ></label>
+	<label>Magie Secondaire: <input name="attr_magie_group_2" type="number" min="0" max="6" ><input name="attr_magie_element_2" type="text" ></label>
+	<label>Magie Tertiaire: <input name="attr_magie_group_3" type="number" min="0" max="6" ><input name="attr_magie_element_3" type="text" ></label>
+     </section>
+
+  <section class="skill f-col nowrap">
+    <h3>Statistiques</h3>
+    <div class="f-row nowrap">
+      <label>FOR</label>
+      <input type="number" name="attr_for" value="3">
+      <button type="roll" name="roll_for" value="&{template:rolls} {{title=Force}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{for}]]}}"> </button>
+    </div>
+	<div class="f-row nowrap">
+      <label>CONST</label>
+      <input type="number" name="attr_const" value="3">
+      <button type="roll" name="roll_const" value="&{template:rolls} {{title=Constitution}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{const}]]}}"> </button>
+    </div>
+	<div class="f-row nowrap">
+      <label>INT</label>
+      <input type="number" name="attr_int" value="3">
+      <button type="roll" name="roll_int" value="&{template:rolls} {{title=Intelligence}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{int}]]}}"> </button>
+    </div>
+	<div class="f-row nowrap">
+      <label>SAG</label>
+      <input type="number" name="attr_sag" value="3">
+      <button type="roll" name="roll_sag" value="&{template:rolls} {{title=Sagesse}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{sag}]]}}"> </button>
+    </div>
+	<div class="f-row nowrap">
+      <label>DEX</label>
+      <input type="number" name="attr_dex" value="3">
+      <button type="roll" name="roll_dex" value="&{template:rolls} {{title=Dextérité}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{dex}]]}}"> </button>
+    </div>
+	<div class="f-row nowrap">
+      <label>CHAR</label>
+      <input type="number" name="attr_charisme" value="3">
+      <button type="roll" name="roll_charisme" value="&{template:rolls} {{title=Charisme}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{charisme}]]}}"> </button>
+    </div>
+    <div class="f-row nowrap">
+      <label>REACT</label>
+      <input type="number" name="attr_react" value="3">
+      <button type="roll" name="roll_react" value="&{template:rolls} {{title=Réactivité}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{react}]]}} "> </button>
+    </div>
+    <div class="f-row nowrap">
+      <label>VITA</label>
+      <input type="number" name="attr_vita" value="3">
+      <button type="roll" name="roll_vita" value="&{template:rolls} {{title=Vitalité}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{vita}]]}}"> </button>
+    </div>
+    <div class="f-col nowrap">
+      <label>PV </label>
+      <div class="f-row nowrap">
+        <input type="number" name="attr_pv" value="0"> / <input type="number" name="attr_pv_max" value="0">
+      </div>
+    </div>
+    <div class="f-col nowrap">
+      <label>SM </label>
+      <div class="f-row nowrap">
+        <input type="number" name="attr_sm" value="0"> / <input type="number" name="attr_sm_max" value="0">
+      </div>
+    </div>
+    <div class="f-col nowrap">
+      <label>CHANCE </label>
+      <div class="f-row nowrap">
+        <input type="number" name="attr_luck" value="0"> / <input type="number" name="attr_luck_max" value="0">
+        <button type="roll" name="roll_luck" value="&{template:rolls} {{title=Chance}} {{subtitle=@{character_name} }} {{roll= [[1d100]]}} {{sur [[@{luck}]]}}"> </button>
+      </div>
+    </div>   
+  </section>
+
+  <section class="power f-col">
+    <h3>Skills & Savoirs</h3>
+	<label>Combat</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_combat" type="text" >
+    </fieldset>
+	<label>Corps</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_corps" type="text" >
+    </fieldset>
+	<label>Magie</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_magie" type="text" >
+    </fieldset>
+	<label>Craft</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_craft" type="text" >
+    </fieldset>
+		<br>
+	<label>Nature</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_nature" type="text" >
+    </fieldset>
+	<label>Savoir-Faire</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_savoirfaire" type="text" >
+    </fieldset>
+	<br>
+	<label>Vocation</label>
+    <fieldset class="repeating_skill">
+        <input name="attr_skill_vocation" type="text" >
+    </fieldset>
+	  </section>
+
+  <section class="memo">
+    <h3>Memo</h3>
+    <textarea name="attr_memo"></textarea>
+  </section>
+
+  <section class="inv">
+    <h3>Inventaire</h3>
+    <textarea name="attr_inventaire"></textarea>
+  </section>
+
+  <section class="misc">
+    <h3>Descprition Physique & Mentale</h3>
+    <textarea name="attr_description"></textarea>
+  </section>
+
+  <footer class="f-col f-center">
+    <span>Hinga JDR all rights reserved</span>
+  </footer>
+</main>
+
+<!-- Datalists & thing that don't show directly on sheet -->
+
+
+
+<!-- roll template -->
+
+<rolltemplate class="sheet-rolltemplate-rolls">
+  <div class="sheet-container">
+    <div class="sheet-header">
+      {{#title}}<div class="sheet-title">{{title}}</div>{{/title}}
+      {{#name}}<div class="sheet-name">{{name}}</div>{{/name}}
+      {{#subtitle}}<div class="sheet-subtitle">{{subtitle}}</div>{{/subtitle}}
+    </div>
+    <div class="sheet-content">
+      {{#allprops() title name subtitle desc}}
+      <div class="sheet-key">{{key}}</div>
+      <div class="sheet-value">{{value}}</div>
+      {{/allprops() title name subtitle desc}}
+      {{#desc}}<div class="sheet-desc">{{desc}}</div>{{/desc}}
+    </div>
+  </div>
+</rolltemplate>
