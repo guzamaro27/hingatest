@@ -3,67 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill Tree</title>
+  <title>Fantasy Skill Tree</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
+      background-color: #f5eada;
+      margin: 0;
     }
 
-    .branch {
-      display: flex;
-      justify-content: space-around;
+    #skillTree {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
       margin: 20px;
     }
 
+    .category {
+      position: relative;
+      text-align: center;
+    }
+
+    .category h2 {
+      color: #602c00;
+    }
+
     .skill {
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       border: 2px solid #333;
       background-color: #eee;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
 
     .locked {
       background-color: #ccc;
       pointer-events: none;
     }
+
+    .details {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #999;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .skill:hover .details {
+      display: block;
+    }
+
+    input {
+      width: 50px;
+      padding: 5px;
+      margin: 10px;
+    }
+
+    #pointsText {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #pointsText span {
+      color: #602c00;
+    }
   </style>
 </head>
 <body>
 
-<div class="branch" id="branch1">
-  <div class="skill" id="skill1" onclick="toggleSkill(1)">1</div>
-  <div class="skill locked" id="skill2" onclick="toggleSkill(2)">2</div>
-  <div class="skill locked" id="skill3" onclick="toggleSkill(3)">3</div>
-  <!-- Add more skills as needed -->
-</div>
+<input type="number" id="pointsInput" placeholder="Points">
+<div id="pointsText">Available Points: <span id="availablePoints">0</span></div>
 
-<div class="branch" id="branch2">
-  <div class="skill locked" id="skill4" onclick="toggleSkill(4)">4</div>
-  <div class="skill locked" id="skill5" onclick="toggleSkill(5)">5</div>
-  <div class="skill locked" id="skill6" onclick="toggleSkill(6)">6</div>
-  <!-- Add more skills as needed -->
-</div>
+<div id="skillTree">
+  <div class="category" id="category1">
+    <h2>Category 1</h2>
+    <div class="skill" id="skill1" onclick="toggleSkill(1)">
+      <span>Skill 1</span>
+      <span class="details">Title: Skill 1<br>Description: This is Skill 1<br>Cost: 2</span>
+    </div>
+    <!-- Add more skills as needed -->
+  </div>
 
-<div class="branch" id="branch3">
-  <div class="skill locked" id="skill7" onclick="toggleSkill(7)">7</div>
-  <div class="skill locked" id="skill8" onclick="toggleSkill(8)">8</div>
-  <div class="skill locked" id="skill9" onclick="toggleSkill(9)">9</div>
-  <!-- Add more skills as needed -->
+  <div class="category" id="category2">
+    <h2>Category 2</h2>
+    <div class="skill" id="skill2" onclick="toggleSkill(2)">
+      <span>Skill 2</span>
+      <span class="details">Title: Skill 2<br>Description: This is Skill 2<br>Cost: 3</span>
+    </div>
+    <!-- Add more skills as needed -->
+  </div>
+
+  <div class="category" id="category3">
+    <h2>Category 3</h2>
+    <div class="skill" id="skill3" onclick="toggleSkill(3)">
+      <span>Skill 3</span>
+      <span class="details">Title: Skill 3<br>Description: This is Skill 3<br>Cost: 1</span>
+    </div>
+    <!-- Add more skills as needed -->
+  </div>
 </div>
 
 <script>
-  function toggleSkill(skillNumber) {
+  let availablePoints = 0;
+
+  document.getElementById('pointsInput').addEventListener('input', function() {
+    availablePoints = parseInt(this.value) || 0;
+    updateAvailablePoints();
+  });
+
+  function updateAvailablePoints() {
+    document.getElementById('availablePoints').textContent = availablePoints;
+  }
+
+  function toggleSkill(skillNumber, cost) {
     const skillElement = document.getElementById(`skill${skillNumber}`);
-    
+    const categoryElement = skillElement.closest('.category');
+
     if (!skillElement.classList.contains('locked')) {
-      skillElement.classList.toggle('locked');
+      const skillCost = cost || parseInt(skillElement.querySelector('.details').textContent.match(/Cost: (\d+)/)[1]);
+      if (availablePoints >= skillCost) {
+        availablePoints -= skillCost;
+        updateAvailablePoints();
+        skillElement.classList.toggle('locked');
+        unlockLinkedSkills(categoryElement);
+      } else {
+        alert('Not enough points to unlock this skill!');
+      }
     }
+  }
+
+  function unlockLinkedSkills(categoryElement) {
+    const linkedSkills = categoryElement.querySelectorAll('.locked');
+    linkedSkills.forEach(skill => skill.classList.remove('locked'));
   }
 </script>
 
