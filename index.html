@@ -88,31 +88,62 @@
 <div id="skillTree">
   <div class="category" id="category1">
     <h2>Category 1</h2>
-    <div class="skill" id="skill1" onclick="toggleSkill(1)">
-      <span>Skill 1</span>
+    <div class="skill" id="magie" onclick="toggleSkill(1, 2)">
+      <span>magie 1</span>
       <span class="details">Title: Skill 1<br>Description: This is Skill 1<br>Cost: 2</span>
     </div>
-    <!-- Add more skills as needed -->
-  </div>
-
-  <div class="category" id="category2">
-    <h2>Category 2</h2>
-    <div class="skill" id="skill2" onclick="toggleSkill(2)">
-      <span>Skill 2</span>
+    <!-- Additional skills hidden initially -->
+    <div class="skill locked" id="combat" onclick="toggleSkill(2)">
+      <span>combat</span>
       <span class="details">Title: Skill 2<br>Description: This is Skill 2<br>Cost: 3</span>
     </div>
-    <!-- Add more skills as needed -->
-  </div>
-
-  <div class="category" id="category3">
-    <h2>Category 3</h2>
-    <div class="skill" id="skill3" onclick="toggleSkill(3)">
-      <span>Skill 3</span>
-      <span class="details">Title: Skill 3<br>Description: This is Skill 3<br>Cost: 1</span>
+    <div class="skill locked" id="corps" onclick="toggleSkill(3)">
+      <span>corps</span>
+      <span class="details">Title: Skill 3<br>Description: This is Skill 3<br>Cost: 4</span>
     </div>
     <!-- Add more skills as needed -->
   </div>
 </div>
+
+  <div id="skillTree">
+  <div class="category" id="category2">
+    <h2>Category 2</h2>
+    <div class="skill" id="skill1" onclick="toggleSkill(1, 2)">
+      <span>Skill 1</span>
+      <span class="details">Title: Skill 1<br>Description: This is Skill 1<br>Cost: 2</span>
+    </div>
+    <!-- Additional skills hidden initially -->
+    <div class="skill locked" id="skill2" onclick="toggleSkill(2)">
+      <span>Skill 2</span>
+      <span class="details">Title: Skill 2<br>Description: This is Skill 2<br>Cost: 3</span>
+    </div>
+    <div class="skill locked" id="skill3" onclick="toggleSkill(3)">
+      <span>Skill 3</span>
+      <span class="details">Title: Skill 3<br>Description: This is Skill 3<br>Cost: 4</span>
+    </div>
+    <!-- Add more skills as needed -->
+  </div>
+  </div>
+
+  <div id="skillTree">
+  <div class="category" id="category3">
+    <h2>Category 3</h2>
+    <div class="skill" id="skill1" onclick="toggleSkill(1, 2)">
+      <span>Skill 1</span>
+      <span class="details">Title: Skill 1<br>Description: This is Skill 1<br>Cost: 2</span>
+    </div>
+    <!-- Additional skills hidden initially -->
+    <div class="skill locked" id="skill2" onclick="toggleSkill(2)">
+      <span>Skill 2</span>
+      <span class="details">Title: Skill 2<br>Description: This is Skill 2<br>Cost: 3</span>
+    </div>
+    <div class="skill locked" id="skill3" onclick="toggleSkill(3)">
+      <span>Skill 3</span>
+      <span class="details">Title: Skill 3<br>Description: This is Skill 3<br>Cost: 4</span>
+    </div>
+    <!-- Add more skills as needed -->
+  </div>
+  </div>
 
 <script>
   let availablePoints = 0;
