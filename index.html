@@ -157,7 +157,7 @@
     document.getElementById('availablePoints').textContent = availablePoints;
   }
 
-  function toggleSkill(skillNumber, cost) {
+function toggleSkill(skillNumber, cost) {
     const skillElement = document.getElementById(`skill${skillNumber}`);
     const categoryElement = skillElement.closest('.category');
 
@@ -168,15 +168,20 @@
         updateAvailablePoints();
         skillElement.classList.toggle('locked');
         unlockLinkedSkills(categoryElement);
+
+        // Check if the first skill is unlocked, then reveal additional skills
+        if (skillNumber === 1) {
+          revealAdditionalSkills(categoryElement);
+        }
       } else {
         alert('Not enough points to unlock this skill!');
       }
     }
   }
 
-  function unlockLinkedSkills(categoryElement) {
-    const linkedSkills = categoryElement.querySelectorAll('.locked');
-    linkedSkills.forEach(skill => skill.classList.remove('locked'));
+  function revealAdditionalSkills(categoryElement) {
+    const hiddenSkills = categoryElement.querySelectorAll('.locked');
+    hiddenSkills.forEach(skill => skill.classList.remove('locked'));
   }
 </script>
 
