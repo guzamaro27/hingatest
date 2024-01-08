@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Tree</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .branch {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+
+    .skill {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #333;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .locked {
+      background-color: #ccc;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="branch" id="branch1">
+  <div class="skill" id="skill1" onclick="toggleSkill(1)">1</div>
+  <div class="skill locked" id="skill2" onclick="toggleSkill(2)">2</div>
+  <div class="skill locked" id="skill3" onclick="toggleSkill(3)">3</div>
+  <!-- Add more skills as needed -->
+</div>
+
+<div class="branch" id="branch2">
+  <div class="skill locked" id="skill4" onclick="toggleSkill(4)">4</div>
+  <div class="skill locked" id="skill5" onclick="toggleSkill(5)">5</div>
+  <div class="skill locked" id="skill6" onclick="toggleSkill(6)">6</div>
+  <!-- Add more skills as needed -->
+</div>
+
+<div class="branch" id="branch3">
+  <div class="skill locked" id="skill7" onclick="toggleSkill(7)">7</div>
+  <div class="skill locked" id="skill8" onclick="toggleSkill(8)">8</div>
+  <div class="skill locked" id="skill9" onclick="toggleSkill(9)">9</div>
+  <!-- Add more skills as needed -->
+</div>
+
+<script>
+  function toggleSkill(skillNumber) {
+    const skillElement = document.getElementById(`skill${skillNumber}`);
+    
+    if (!skillElement.classList.contains('locked')) {
+      skillElement.classList.toggle('locked');
+    }
+  }
+</script>
+
+</body>
+</html>
